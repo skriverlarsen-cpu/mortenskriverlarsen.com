@@ -1,0 +1,592 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Morten Skriver Larsen</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Jost:wght@200;300;400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --slate:      #1C1E24;
+    --slate-mid:  #22252C;
+    --slate-lift: #2A2D35;
+    --gold:       #8A6E20;
+    --gold-light: #B8962C;
+    --sage:       #D4D8CC;
+    --sage-mid:   #C0C4BB;
+    --sage-light: #F2F4F0;
+    --dark-sage:  #4A5248;
+  }
+
+  *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    font-family: 'Jost', sans-serif;
+    background: var(--slate);
+    color: var(--sage-light);
+    min-height: 100vh;
+    overflow-x: hidden;
+  }
+
+  /* ── NAV ── */
+  nav {
+    position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+    display: flex; align-items: center; justify-content: space-between;
+    padding: 0 48px; height: 60px;
+    background: rgba(28, 30, 36, 0.92);
+    backdrop-filter: blur(12px);
+    border-bottom: 0.5px solid rgba(212,216,204,0.08);
+  }
+
+  .nav-mark {
+    display: flex; align-items: center; gap: 12px;
+    text-decoration: none;
+  }
+  .nav-wordmark {
+    font-size: 12px; font-weight: 600; letter-spacing: 0.22em;
+    color: var(--dark-sage); text-transform: uppercase;
+  }
+
+  .nav-links {
+    display: flex; gap: 32px; list-style: none;
+  }
+  .nav-links a {
+    font-size: 10px; font-weight: 500; letter-spacing: 0.2em;
+    color: var(--dark-sage); text-decoration: none;
+    text-transform: uppercase;
+    transition: color 0.2s;
+  }
+  .nav-links a:hover { color: var(--sage-light); }
+
+  /* ── HERO ── */
+  .hero {
+    min-height: 100vh;
+    display: flex; flex-direction: column;
+    justify-content: flex-end;
+    padding: 0 48px 80px;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .hero-bg {
+    position: absolute; inset: 0;
+    pointer-events: none;
+  }
+
+  /* Subtle geometric grid in background */
+  .hero-bg svg {
+    position: absolute; inset: 0;
+    width: 100%; height: 100%;
+    opacity: 0.04;
+  }
+
+  .hero-content {
+    position: relative; z-index: 2;
+    max-width: 900px;
+  }
+
+  .hero-eyebrow {
+    display: flex; align-items: center; gap: 16px;
+    margin-bottom: 32px;
+  }
+  .hero-eyebrow-line {
+    width: 32px; height: 1px; background: var(--gold);
+  }
+  .hero-eyebrow-text {
+    font-size: 10px; font-weight: 500; letter-spacing: 0.28em;
+    color: var(--gold); text-transform: uppercase;
+  }
+
+  h1 {
+    font-size: clamp(36px, 5.5vw, 72px);
+    font-weight: 800;
+    letter-spacing: -0.025em;
+    color: var(--sage-light);
+    line-height: 1.05;
+    margin-bottom: 16px;
+  }
+
+  .hero-sub {
+    font-size: clamp(13px, 1.5vw, 16px);
+    font-weight: 300;
+    color: var(--dark-sage);
+    letter-spacing: 0.04em;
+    margin-bottom: 48px;
+  }
+
+  .hero-cta {
+    display: inline-flex; align-items: center; gap: 12px;
+    font-size: 10px; font-weight: 600; letter-spacing: 0.22em;
+    color: var(--slate); text-decoration: none;
+    text-transform: uppercase;
+    background: var(--gold);
+    padding: 14px 28px;
+    border-radius: 2px;
+    transition: background 0.2s, transform 0.15s;
+  }
+  .hero-cta:hover {
+    background: var(--gold-light);
+    transform: translateY(-1px);
+  }
+
+  /* Compass mark in hero — large, faded */
+  .hero-compass {
+    position: absolute;
+    right: 80px; top: 50%;
+    transform: translateY(-50%);
+    opacity: 0.06;
+    pointer-events: none;
+  }
+
+  /* ── SECTION SHARED ── */
+  section { padding: 100px 48px; }
+
+  .section-inner { max-width: 1100px; margin: 0 auto; }
+
+  .section-label {
+    display: flex; align-items: center; gap: 16px;
+    margin-bottom: 48px;
+  }
+  .section-label-line { width: 32px; height: 1px; background: var(--gold); }
+  .section-label-text {
+    font-size: 10px; font-weight: 500; letter-spacing: 0.28em;
+    color: var(--gold); text-transform: uppercase;
+  }
+
+  /* ── ABOUT ── */
+  .about {
+    background: var(--dark-sage);
+    padding: 100px 48px;
+  }
+
+  .about .section-label-text { color: var(--gold); }
+  .about .section-label-line { background: var(--gold); }
+
+  .about-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 80px;
+    align-items: start;
+  }
+
+  .about-heading {
+    font-size: clamp(28px, 3.5vw, 44px);
+    font-weight: 700;
+    letter-spacing: -0.02em;
+    color: var(--sage-light);
+    line-height: 1.15;
+    padding-bottom: 20px;
+    border-bottom: 2px solid var(--gold);
+    margin-bottom: 0;
+  }
+
+  .about-body {
+    font-size: 15px;
+    font-weight: 300;
+    line-height: 1.9;
+    color: var(--sage);
+    border-left: 2px solid var(--gold);
+    padding-left: 24px;
+  }
+
+  .about-body p + p { margin-top: 20px; }
+
+  .about-stats {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 2px;
+    background: var(--slate);
+    margin-top: 48px;
+    border: 2px solid var(--slate);
+  }
+
+  .stat {
+    background: var(--sage);
+    padding: 28px 24px;
+  }
+  .stat-number {
+    font-size: 32px; font-weight: 800;
+    letter-spacing: -0.03em; color: var(--gold);
+    margin-bottom: 4px;
+  }
+  .stat-label {
+    font-size: 10px; font-weight: 500;
+    letter-spacing: 0.18em; color: var(--slate);
+    text-transform: uppercase;
+  }
+
+  /* ── WORK ── */
+  .work { background: var(--slate); }
+
+  .work-list {
+    display: flex; flex-direction: column;
+    gap: 0;
+    border-top: 0.5px solid rgba(212,216,204,0.1);
+  }
+
+  .work-item {
+    display: grid;
+    grid-template-columns: 48px 1fr auto;
+    gap: 32px;
+    align-items: start;
+    padding: 32px 0;
+    border-bottom: 0.5px solid rgba(212,216,204,0.1);
+    transition: background 0.15s;
+    cursor: default;
+  }
+
+  .work-item:hover {
+    padding-left: 16px;
+    padding-right: 16px;
+    margin: 0 -16px;
+    background: var(--slate-mid);
+    border-radius: 4px;
+    border-color: transparent;
+    border-left: 2px solid var(--gold);
+  }
+
+  .work-num {
+    font-size: 12px; font-weight: 600;
+    letter-spacing: 0.1em; color: var(--gold);
+    padding-top: 3px;
+  }
+
+  .work-title {
+    font-size: 16px; font-weight: 600;
+    color: var(--sage-light);
+    margin-bottom: 4px;
+    letter-spacing: -0.01em;
+  }
+
+  .work-company {
+    font-size: 12px; font-weight: 300;
+    color: var(--dark-sage);
+    letter-spacing: 0.06em;
+  }
+
+  .work-period {
+    font-size: 11px; font-weight: 400;
+    color: var(--dark-sage);
+    letter-spacing: 0.1em;
+    white-space: nowrap;
+    padding-top: 3px;
+  }
+
+  /* ── CONTACT ── */
+  .contact {
+    background: var(--slate-mid);
+    border-top: 0.5px solid rgba(212,216,204,0.08);
+  }
+
+  .contact-inner {
+    max-width: 1100px; margin: 0 auto;
+    display: grid; grid-template-columns: 1fr 1fr;
+    gap: 80px; align-items: center;
+  }
+
+  .contact-heading {
+    font-size: clamp(28px, 3.5vw, 44px);
+    font-weight: 700;
+    letter-spacing: -0.02em;
+    color: var(--sage-light);
+    line-height: 1.15;
+    margin-bottom: 16px;
+  }
+
+  .contact-sub {
+    font-size: 14px; font-weight: 300;
+    color: var(--dark-sage); line-height: 1.8;
+  }
+
+  .contact-links {
+    display: flex; flex-direction: column; gap: 16px;
+  }
+
+  .contact-link {
+    display: flex; align-items: center; gap: 20px;
+    text-decoration: none;
+    padding: 20px 24px;
+    background: var(--slate);
+    border: 0.5px solid rgba(212,216,204,0.1);
+    border-radius: 3px;
+    transition: border-color 0.2s, transform 0.15s;
+  }
+  .contact-link:hover {
+    border-color: var(--gold);
+    transform: translateX(4px);
+  }
+
+  .contact-link-label {
+    font-size: 9px; font-weight: 500;
+    letter-spacing: 0.22em; color: var(--gold);
+    text-transform: uppercase; margin-bottom: 2px;
+  }
+  .contact-link-value {
+    font-size: 13px; font-weight: 400;
+    color: var(--sage-light);
+  }
+
+  /* ── FOOTER ── */
+  footer {
+    background: var(--slate);
+    border-top: 0.5px solid rgba(212,216,204,0.06);
+    padding: 28px 48px;
+    display: flex; align-items: center; justify-content: space-between;
+  }
+
+  .footer-left {
+    font-size: 9px; font-weight: 300;
+    letter-spacing: 0.18em; color: var(--dark-sage);
+    text-transform: uppercase;
+  }
+
+  .footer-right {
+    display: flex; align-items: center; gap: 8px;
+  }
+
+  /* ── ANIMATIONS ── */
+  @keyframes fadeUp {
+    from { opacity: 0; transform: translateY(24px); }
+    to   { opacity: 1; transform: translateY(0); }
+  }
+
+  .hero-eyebrow { animation: fadeUp 0.6s ease both; }
+  h1 { animation: fadeUp 0.6s 0.1s ease both; }
+  .hero-sub { animation: fadeUp 0.6s 0.2s ease both; }
+  .hero-cta { animation: fadeUp 0.6s 0.3s ease both; }
+
+  /* ── RESPONSIVE ── */
+  @media (max-width: 768px) {
+    nav { padding: 0 24px; }
+    .nav-links { display: none; }
+    .hero { padding: 0 24px 60px; }
+    section { padding: 72px 24px; }
+    .about { padding: 72px 24px; }
+    .about-grid { grid-template-columns: 1fr; gap: 40px; }
+    .contact-inner { grid-template-columns: 1fr; gap: 40px; }
+    .work-item { grid-template-columns: 36px 1fr; }
+    .work-period { display: none; }
+    footer { padding: 24px; flex-direction: column; gap: 8px; text-align: center; }
+    .hero-compass { display: none; }
+  }
+</style>
+</head>
+<body>
+
+<!-- ── NAV ── -->
+<nav>
+  <a class="nav-mark" href="#">
+    <svg width="14" height="18" viewBox="-10 -14 20 28" aria-hidden="true">
+      <polygon points="0,-12 3,-3 0,-1 -3,-3" fill="#8A6E20"/>
+      <polygon points="0,10 2,3 0,1 -2,3" fill="none" stroke="#D4D8CC" stroke-width="1" stroke-linejoin="round"/>
+      <line x1="-7" y1="0" x2="-4" y2="0" stroke="#4A5248" stroke-width="0.8" stroke-linecap="round"/>
+      <line x1="4" y1="0" x2="7" y2="0" stroke="#4A5248" stroke-width="0.8" stroke-linecap="round"/>
+      <circle cx="0" cy="0" r="2.5" fill="#1C1E24" stroke="#D4D8CC" stroke-width="0.8"/>
+      <circle cx="0" cy="0" r="1" fill="#8A6E20"/>
+    </svg>
+    <span class="nav-wordmark">MSL</span>
+  </a>
+  <ul class="nav-links">
+    <li><a href="#about">About</a></li>
+    <li><a href="#work">Work</a></li>
+    <li><a href="#contact">Contact</a></li>
+  </ul>
+</nav>
+
+<!-- ── HERO ── -->
+<section class="hero">
+  <div class="hero-bg">
+    <svg viewBox="0 0 1440 900" preserveAspectRatio="xMidYMid slice" xmlns="http://www.w3.org/2000/svg">
+      <!-- Concentric squares -->
+      <rect x="620" y="150" width="600" height="600" fill="none" stroke="#D4D8CC" stroke-width="1"/>
+      <rect x="660" y="190" width="520" height="520" fill="none" stroke="#D4D8CC" stroke-width="1"/>
+      <rect x="700" y="230" width="440" height="440" fill="none" stroke="#D4D8CC" stroke-width="1"/>
+      <rect x="740" y="270" width="360" height="360" fill="none" stroke="#D4D8CC" stroke-width="1"/>
+      <rect x="780" y="310" width="280" height="280" fill="none" stroke="#D4D8CC" stroke-width="1"/>
+      <rect x="820" y="350" width="200" height="200" fill="none" stroke="#D4D8CC" stroke-width="1"/>
+      <!-- Diagonal lines -->
+      <line x1="620" y1="150" x2="1220" y2="750" stroke="#D4D8CC" stroke-width="0.5"/>
+      <line x1="1220" y1="150" x2="620" y2="750" stroke="#D4D8CC" stroke-width="0.5"/>
+      <!-- Circle -->
+      <circle cx="920" cy="450" r="280" fill="none" stroke="#D4D8CC" stroke-width="1"/>
+      <circle cx="920" cy="450" r="200" fill="none" stroke="#D4D8CC" stroke-width="0.5"/>
+    </svg>
+  </div>
+
+  <!-- Large compass ghost -->
+  <div class="hero-compass">
+    <svg width="480" height="560" viewBox="-120 -160 240 320">
+      <polygon points="0,-150 30,-40 0,-8 -30,-40" fill="#8A6E20"/>
+      <polygon points="0,130 20,40 0,8 -20,40" fill="none" stroke="#D4D8CC" stroke-width="3" stroke-linejoin="round"/>
+      <line x1="-100" y1="0" x2="-40" y2="0" stroke="#D4D8CC" stroke-width="2" stroke-linecap="round"/>
+      <line x1="40" y1="0" x2="100" y2="0" stroke="#D4D8CC" stroke-width="2" stroke-linecap="round"/>
+      <circle cx="0" cy="0" r="28" fill="#1C1E24" stroke="#D4D8CC" stroke-width="2.5"/>
+      <circle cx="0" cy="0" r="10" fill="#8A6E20"/>
+    </svg>
+  </div>
+
+  <div class="hero-content">
+    <div class="hero-eyebrow">
+      <div class="hero-eyebrow-line"></div>
+      <span class="hero-eyebrow-text">Morten Skriver Larsen · Amsterdam</span>
+    </div>
+    <h1>Builder of things<br>that didn't exist yet.</h1>
+    <p class="hero-sub">Copenhagen · Oslo · Stockholm · Singapore · Amsterdam</p>
+    <a href="#about" class="hero-cta">Learn more</a>
+  </div>
+</section>
+
+<!-- ── ABOUT ── -->
+<section class="about" id="about">
+  <div class="section-inner">
+    <div class="section-label">
+      <div class="section-label-line"></div>
+      <span class="section-label-text">About</span>
+    </div>
+    <div class="about-grid">
+      <div>
+        <h2 class="about-heading">Sets direction.<br>Builds the engine.<br>Ships it.</h2>
+        <div class="about-stats">
+          <div class="stat">
+            <div class="stat-number">26</div>
+            <div class="stat-label">Payment methods launched</div>
+          </div>
+          <div class="stat">
+            <div class="stat-number">80+</div>
+            <div class="stat-label">Team built from zero</div>
+          </div>
+          <div class="stat">
+            <div class="stat-number">15+</div>
+            <div class="stat-label">Years at Booking.com</div>
+          </div>
+          <div class="stat">
+            <div class="stat-number">1M+</div>
+            <div class="stat-label">Partners served globally</div>
+          </div>
+        </div>
+      </div>
+      <div class="about-body">
+        <p>Twenty years across fintech, travel-tech, and commercial strategy. From opening Booking.com's first Oslo office to co-founding <span style="color:var(--gold-light);font-weight:500;">Product Marketing</span> and leading <span style="color:var(--gold-light);font-weight:500;">payments expansion</span> across APAC. The pattern that repeats: take something ambiguous, frame the problem, build the GTM engine, deploy into the organisation.</p>
+        <p>Known for operating in tiger team mode, scoping the hard questions, mobilising cross-functional teams, and returning decision-ready options to senior leadership. Whether that's <span style="color:var(--gold-light);font-weight:500;">triple-digit growth in partner sign-ups</span> through a B2B marketing engine built from zero, <span style="color:var(--gold-light);font-weight:500;">immediate majority adoption</span> at a payments launch in Indonesia, or architecting the licensed payments strategy for Booking Holdings.</p>
+        <p><span style="color:var(--gold-light);font-weight:500;">Partner and customer centricity</span> is the lens on everything. Strategy that doesn't improve the experience isn't strategy worth shipping. Graphic design by training. Fintech strategist by trajectory. Perpetually curious by nature.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ── WORK ── -->
+<section class="work" id="work">
+  <div class="section-inner">
+    <div class="section-label">
+      <div class="section-label-line"></div>
+      <span class="section-label-text">Work</span>
+    </div>
+    <div class="work-list">
+
+      <div class="work-item">
+        <span class="work-num">01</span>
+        <div>
+          <div class="work-title">Senior Manager, Fintech Strategy</div>
+          <div class="work-company">Booking Holdings Financial Services</div>
+        </div>
+        <span class="work-period">2022 — Present</span>
+      </div>
+
+      <div class="work-item">
+        <span class="work-num">02</span>
+        <div>
+          <div class="work-title">Regional Manager, Fintech APAC</div>
+          <div class="work-company">Booking.com · Singapore</div>
+        </div>
+        <span class="work-period">2019 — 2022</span>
+      </div>
+
+      <div class="work-item">
+        <span class="work-num">03</span>
+        <div>
+          <div class="work-title">Head of Product Marketing, Fintech</div>
+          <div class="work-company">Booking.com</div>
+        </div>
+        <span class="work-period">2018 — 2019</span>
+      </div>
+
+      <div class="work-item">
+        <span class="work-num">04</span>
+        <div>
+          <div class="work-title">Lead Commercial Owner, Fintech</div>
+          <div class="work-company">Booking.com</div>
+        </div>
+        <span class="work-period">2017 — 2018</span>
+      </div>
+
+      <div class="work-item">
+        <span class="work-num">05</span>
+        <div>
+          <div class="work-title">Manager Strategic Partnerships</div>
+          <div class="work-company">Booking.com</div>
+        </div>
+        <span class="work-period">2013 — 2014</span>
+      </div>
+
+      <div class="work-item">
+        <span class="work-num">06</span>
+        <div>
+          <div class="work-title">Area Manager, Norway</div>
+          <div class="work-company">Booking.com · Oslo</div>
+        </div>
+        <span class="work-period">2010 — 2013</span>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ── CONTACT ── -->
+<section class="contact" id="contact">
+  <div class="contact-inner">
+    <div>
+      <div class="section-label">
+        <div class="section-label-line"></div>
+        <span class="section-label-text">Contact</span>
+      </div>
+      <h2 class="contact-heading">Let's talk.</h2>
+      <p class="contact-sub">Open to conversations about strategy, leadership, and building things that matter.</p>
+    </div>
+    <div class="contact-links">
+      <a class="contact-link" href="mailto:skriverlarsen@gmail.com">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#8A6E20" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/></svg>
+        <div>
+          <div class="contact-link-label">Email</div>
+          <div class="contact-link-value">skriverlarsen@gmail.com</div>
+        </div>
+      </a>
+      <a class="contact-link" href="https://www.linkedin.com/in/morten-skriver-larsen-60984120" target="_blank" rel="noopener">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#8A6E20" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/><rect x="2" y="9" width="4" height="12"/><circle cx="4" cy="4" r="2"/></svg>
+        <div>
+          <div class="contact-link-label">LinkedIn</div>
+          <div class="contact-link-value">morten-skriver-larsen</div>
+        </div>
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- ── FOOTER ── -->
+<footer>
+  <span class="footer-left">Morten Skriver Larsen · Amsterdam · 2026</span>
+  <div class="footer-right">
+    <svg width="10" height="12" viewBox="-8 -10 16 20" aria-hidden="true">
+      <polygon points="0,-8 2,-2 0,-0.5 -2,-2" fill="#8A6E20"/>
+      <polygon points="0,7 1.5,2 0,0.5 -1.5,2" fill="none" stroke="#4A5248" stroke-width="0.8" stroke-linejoin="round"/>
+      <circle cx="0" cy="0" r="1.8" fill="#1C1E24" stroke="#4A5248" stroke-width="0.8"/>
+      <circle cx="0" cy="0" r="0.7" fill="#8A6E20"/>
+    </svg>
+    <span class="footer-left">MSL</span>
+  </div>
+</footer>
+
+</body>
+</html>
