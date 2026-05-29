@@ -8,9 +8,9 @@
 <link href="https://fonts.googleapis.com/css2?family=Jost:wght@200;300;400;500;600;700;800&display=swap" rel="stylesheet">
 <style>
   :root {
-    --slate:      #1C1E24;
-    --slate-mid:  #22252C;
-    --slate-lift: #2A2D35;
+    --slate:      #232820;
+    --slate-mid:  #2A2F26;
+    --slate-lift: #313829;
     --gold:       #8A6E20;
     --gold-light: #B8962C;
     --sage:       #D4D8CC;
@@ -36,7 +36,7 @@
     position: fixed; top: 0; left: 0; right: 0; z-index: 100;
     display: flex; align-items: center; justify-content: space-between;
     padding: 0 48px; height: 60px;
-    background: rgba(28, 30, 36, 0.92);
+    background: rgba(35, 40, 32, 0.92);
     backdrop-filter: blur(12px);
     border-bottom: 0.5px solid rgba(212,216,204,0.08);
   }
@@ -46,8 +46,8 @@
     text-decoration: none;
   }
   .nav-wordmark {
-    font-size: 12px; font-weight: 600; letter-spacing: 0.22em;
-    color: var(--dark-sage); text-transform: uppercase;
+    font-size: 15px; font-weight: 700; letter-spacing: 0.22em;
+    color: var(--gold-light); text-transform: uppercase;
   }
 
   .nav-links {
@@ -65,8 +65,8 @@
   .hero {
     min-height: 100vh;
     display: flex; flex-direction: column;
-    justify-content: flex-end;
-    padding: 0 48px 80px;
+    justify-content: center;
+    padding: 80px 48px;
     position: relative;
     overflow: hidden;
   }
@@ -119,7 +119,7 @@
 
   .hero-cta {
     display: inline-flex; align-items: center; gap: 12px;
-    font-size: 10px; font-weight: 600; letter-spacing: 0.22em;
+    font-size: 12px; font-weight: 600; letter-spacing: 0.22em;
     color: var(--slate); text-decoration: none;
     text-transform: uppercase;
     background: var(--gold);
@@ -160,6 +160,15 @@
   .about {
     background: var(--dark-sage);
     padding: 100px 48px;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .about-compass {
+    position: absolute;
+    right: -60px; bottom: -80px;
+    opacity: 0.07;
+    pointer-events: none;
   }
 
   .about .section-label-text { color: var(--gold); }
@@ -362,7 +371,7 @@
   @media (max-width: 768px) {
     nav { padding: 0 24px; }
     .nav-links { display: none; }
-    .hero { padding: 0 24px 60px; }
+    .hero { padding: 100px 24px 60px; }
     section { padding: 72px 24px; }
     .about { padding: 72px 24px; }
     .about-grid { grid-template-columns: 1fr; gap: 40px; }
@@ -434,13 +443,23 @@
       <span class="hero-eyebrow-text">Morten Skriver Larsen · Amsterdam</span>
     </div>
     <h1>Builder of things<br>that didn't exist yet.</h1>
-    <p class="hero-sub">Copenhagen · Oslo · Stockholm · Singapore · Amsterdam</p>
+    <p class="hero-sub">Copenhagen · Stockholm · Oslo · Amsterdam · Singapore</p>
     <a href="#about" class="hero-cta">Learn more</a>
   </div>
 </section>
 
 <!-- ── ABOUT ── -->
 <section class="about" id="about">
+  <div class="about-compass">
+    <svg width="560" height="640" viewBox="-140 -180 280 360">
+      <polygon points="0,-170 35,-46 0,-9 -35,-46" fill="#B8962C"/>
+      <polygon points="0,148 23,46 0,9 -23,46" fill="none" stroke="#D4D8CC" stroke-width="3.5" stroke-linejoin="round"/>
+      <line x1="-115" y1="0" x2="-46" y2="0" stroke="#D4D8CC" stroke-width="2.5" stroke-linecap="round"/>
+      <line x1="46" y1="0" x2="115" y2="0" stroke="#D4D8CC" stroke-width="2.5" stroke-linecap="round"/>
+      <circle cx="0" cy="0" r="32" fill="#232820" stroke="#D4D8CC" stroke-width="3"/>
+      <circle cx="0" cy="0" r="12" fill="#B8962C"/>
+    </svg>
+  </div>
   <div class="section-inner">
     <div class="section-label">
       <div class="section-label-line"></div>
@@ -541,10 +560,16 @@
       </div>
 
     </div>
+    <div style="padding: 28px 0; border-top: 0.5px solid rgba(212,216,204,0.1); display:flex; align-items:center; gap: 16px;">
+      <div style="width:32px; height:1px; background:rgba(212,216,204,0.15);"></div>
+      <a href="https://www.linkedin.com/in/morten-skriver-larsen-60984120" target="_blank" rel="noopener"
+         style="font-size:10px; font-weight:500; letter-spacing:0.2em; color:var(--dark-sage); text-decoration:none; text-transform:uppercase; transition: color 0.2s;"
+         onmouseover="this.style.color='var(--gold-light)'" onmouseout="this.style.color='var(--dark-sage)'">
+        Selected roles &nbsp;·&nbsp; Full history on LinkedIn →
+      </a>
+    </div>
   </div>
-</section>
-
-<!-- ── CONTACT ── -->
+</section> -->
 <section class="contact" id="contact">
   <div class="contact-inner">
     <div>
