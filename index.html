@@ -258,9 +258,9 @@
   }
 
   .work-dot {
-    font-size: 18px; font-weight: 400;
-    color: var(--gold);
-    padding-top: 1px;
+    font-size: 28px; font-weight: 700;
+    color: var(--gold-light);
+    padding-top: 0px;
     line-height: 1;
   }
 
@@ -359,15 +359,16 @@
 
   .hero-mini-compass {
     position: absolute;
-    top: 18%; left: 50%;
+    top: 10%; left: 50%;
     transform: translateX(-50%);
-    opacity: 0.18;
+    opacity: 0.1;
     pointer-events: none;
     z-index: 1;
+    display: none;
   }
 
-  @media (min-width: 769px) {
-    .hero-mini-compass { display: none; }
+  @media (max-width: 768px) {
+    .hero-mini-compass { display: block; }
   }
   @keyframes fadeUp {
     from { opacity: 0; transform: translateY(24px); }
@@ -406,7 +407,7 @@
       <polygon points="0,10 2,3 0,1 -2,3" fill="none" stroke="#D4D8CC" stroke-width="1" stroke-linejoin="round"/>
       <line x1="-7" y1="0" x2="-4" y2="0" stroke="#4A5248" stroke-width="0.8" stroke-linecap="round"/>
       <line x1="4" y1="0" x2="7" y2="0" stroke="#4A5248" stroke-width="0.8" stroke-linecap="round"/>
-      <circle cx="0" cy="0" r="2.5" fill="#1C1E24" stroke="#D4D8CC" stroke-width="0.8"/>
+      <circle cx="0" cy="0" r="2.5" fill="#232820" stroke="#D4D8CC" stroke-width="0.8"/>
       <circle cx="0" cy="0" r="1" fill="#8A6E20"/>
     </svg>
     <span class="nav-wordmark">MSL</span>
@@ -445,19 +446,18 @@
       <polygon points="0,130 20,40 0,8 -20,40" fill="none" stroke="#D4D8CC" stroke-width="3" stroke-linejoin="round"/>
       <line x1="-100" y1="0" x2="-40" y2="0" stroke="#D4D8CC" stroke-width="2" stroke-linecap="round"/>
       <line x1="40" y1="0" x2="100" y2="0" stroke="#D4D8CC" stroke-width="2" stroke-linecap="round"/>
-      <circle cx="0" cy="0" r="28" fill="#1C1E24" stroke="#D4D8CC" stroke-width="2.5"/>
+      <circle cx="0" cy="0" r="28" fill="#232820" stroke="#D4D8CC" stroke-width="2.5"/>
       <circle cx="0" cy="0" r="10" fill="#8A6E20"/>
     </svg>
   </div>
 
   <div class="hero-mini-compass">
-    <svg width="120" height="140" viewBox="-60 -80 120 160">
-      <polygon points="0,-72 16,-20 0,-4 -16,-20" fill="#B8962C"/>
-      <polygon points="0,60 10,20 0,4 -10,20" fill="none" stroke="#D4D8CC" stroke-width="2" stroke-linejoin="round"/>
-      <line x1="-50" y1="0" x2="-20" y2="0" stroke="#D4D8CC" stroke-width="1.5" stroke-linecap="round"/>
-      <line x1="20" y1="0" x2="50" y2="0" stroke="#D4D8CC" stroke-width="1.5" stroke-linecap="round"/>
-      <circle cx="0" cy="0" r="14" fill="#232820" stroke="#D4D8CC" stroke-width="1.8"/>
-      <circle cx="0" cy="0" r="5" fill="#B8962C"/>
+    <svg width="80" height="80" viewBox="-50 -50 100 100">
+      <polygon points="0,-44 10,-12 0,-3 -10,-12" fill="#B8962C"/>
+      <line x1="-38" y1="0" x2="-14" y2="0" stroke="#D4D8CC" stroke-width="1.2" stroke-linecap="round"/>
+      <line x1="14" y1="0" x2="38" y2="0" stroke="#D4D8CC" stroke-width="1.2" stroke-linecap="round"/>
+      <circle cx="0" cy="0" r="10" fill="#232820" stroke="#D4D8CC" stroke-width="1.4"/>
+      <circle cx="0" cy="0" r="3.5" fill="#B8962C"/>
     </svg>
   </div>
   <div class="hero-content">
