@@ -238,8 +238,8 @@
 
   .work-item {
     display: grid;
-    grid-template-columns: 48px 1fr auto;
-    gap: 32px;
+    grid-template-columns: 20px 1fr auto;
+    gap: 20px;
     align-items: start;
     padding: 32px 0;
     border-bottom: 0.5px solid rgba(212,216,204,0.1);
@@ -257,10 +257,11 @@
     border-left: 2px solid var(--gold);
   }
 
-  .work-num {
-    font-size: 12px; font-weight: 600;
-    letter-spacing: 0.1em; color: var(--gold);
-    padding-top: 3px;
+  .work-dot {
+    font-size: 18px; font-weight: 400;
+    color: var(--gold);
+    padding-top: 1px;
+    line-height: 1;
   }
 
   .work-title {
@@ -272,13 +273,13 @@
 
   .work-company {
     font-size: 12px; font-weight: 300;
-    color: var(--dark-sage);
+    color: var(--sage);
     letter-spacing: 0.06em;
   }
 
   .work-period {
     font-size: 11px; font-weight: 400;
-    color: var(--dark-sage);
+    color: var(--sage);
     letter-spacing: 0.1em;
     white-space: nowrap;
     padding-top: 3px;
@@ -307,7 +308,7 @@
 
   .contact-sub {
     font-size: 14px; font-weight: 300;
-    color: var(--dark-sage); line-height: 1.8;
+    color: var(--sage); line-height: 1.8;
   }
 
   .contact-links {
@@ -356,7 +357,18 @@
     display: flex; align-items: center; gap: 8px;
   }
 
-  /* ── ANIMATIONS ── */
+  .hero-mini-compass {
+    position: absolute;
+    top: 18%; left: 50%;
+    transform: translateX(-50%);
+    opacity: 0.18;
+    pointer-events: none;
+    z-index: 1;
+  }
+
+  @media (min-width: 769px) {
+    .hero-mini-compass { display: none; }
+  }
   @keyframes fadeUp {
     from { opacity: 0; transform: translateY(24px); }
     to   { opacity: 1; transform: translateY(0); }
@@ -438,6 +450,16 @@
     </svg>
   </div>
 
+  <div class="hero-mini-compass">
+    <svg width="120" height="140" viewBox="-60 -80 120 160">
+      <polygon points="0,-72 16,-20 0,-4 -16,-20" fill="#B8962C"/>
+      <polygon points="0,60 10,20 0,4 -10,20" fill="none" stroke="#D4D8CC" stroke-width="2" stroke-linejoin="round"/>
+      <line x1="-50" y1="0" x2="-20" y2="0" stroke="#D4D8CC" stroke-width="1.5" stroke-linecap="round"/>
+      <line x1="20" y1="0" x2="50" y2="0" stroke="#D4D8CC" stroke-width="1.5" stroke-linecap="round"/>
+      <circle cx="0" cy="0" r="14" fill="#232820" stroke="#D4D8CC" stroke-width="1.8"/>
+      <circle cx="0" cy="0" r="5" fill="#B8962C"/>
+    </svg>
+  </div>
   <div class="hero-content">
     <div class="hero-eyebrow">
       <div class="hero-eyebrow-line"></div>
@@ -507,7 +529,7 @@
     <div class="work-list">
 
       <div class="work-item">
-        <span class="work-num">01</span>
+        <span class="work-dot">·</span>
         <div>
           <div class="work-title">Senior Manager, Fintech Strategy</div>
           <div class="work-company">Booking Holdings Financial Services</div>
@@ -516,7 +538,7 @@
       </div>
 
       <div class="work-item">
-        <span class="work-num">02</span>
+        <span class="work-dot">·</span>
         <div>
           <div class="work-title">Regional Manager, Fintech APAC</div>
           <div class="work-company">Booking.com · Singapore</div>
@@ -525,7 +547,7 @@
       </div>
 
       <div class="work-item">
-        <span class="work-num">03</span>
+        <span class="work-dot">·</span>
         <div>
           <div class="work-title">Head of Product Marketing, Fintech</div>
           <div class="work-company">Booking.com</div>
@@ -534,7 +556,7 @@
       </div>
 
       <div class="work-item">
-        <span class="work-num">04</span>
+        <span class="work-dot">·</span>
         <div>
           <div class="work-title">Lead Commercial Owner, Fintech</div>
           <div class="work-company">Booking.com</div>
@@ -543,7 +565,7 @@
       </div>
 
       <div class="work-item">
-        <span class="work-num">05</span>
+        <span class="work-dot">·</span>
         <div>
           <div class="work-title">Manager Strategic Partnerships</div>
           <div class="work-company">Booking.com</div>
@@ -552,7 +574,7 @@
       </div>
 
       <div class="work-item">
-        <span class="work-num">06</span>
+        <span class="work-dot">·</span>
         <div>
           <div class="work-title">Area Manager, Norway</div>
           <div class="work-company">Booking.com · Oslo</div>
@@ -564,7 +586,7 @@
     <div style="padding: 28px 0; border-top: 0.5px solid rgba(212,216,204,0.1); display:flex; align-items:center; gap: 16px;">
       <div style="width:32px; height:1px; background:rgba(212,216,204,0.15);"></div>
       <a href="https://www.linkedin.com/in/morten-skriver-larsen-60984120" target="_blank" rel="noopener"
-         style="font-size:10px; font-weight:500; letter-spacing:0.2em; color:var(--dark-sage); text-decoration:none; text-transform:uppercase; transition: color 0.2s;"
+         style="font-size:10px; font-weight:500; letter-spacing:0.2em; color:var(--sage); text-decoration:none; text-transform:uppercase; transition: color 0.2s;"
          onmouseover="this.style.color='var(--gold-light)'" onmouseout="this.style.color='var(--dark-sage)'">
         Selected roles &nbsp;·&nbsp; Full history on LinkedIn →
       </a>
