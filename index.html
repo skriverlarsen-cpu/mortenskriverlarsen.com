@@ -152,8 +152,8 @@
   }
   .section-label-line { width: 32px; height: 1px; background: var(--gold); }
   .section-label-text {
-    font-size: 10px; font-weight: 500; letter-spacing: 0.28em;
-    color: var(--gold); text-transform: uppercase;
+    font-size: 10px; font-weight: 600; letter-spacing: 0.28em;
+    color: var(--gold-light); text-transform: uppercase;
   }
 
   /* ── ABOUT ── */
@@ -171,8 +171,8 @@
     pointer-events: none;
   }
 
-  .about .section-label-text { color: var(--gold); }
-  .about .section-label-line { background: var(--gold); }
+  .about .section-label-text { color: var(--gold-light); font-weight: 600; }
+  .about .section-label-line { background: var(--gold-light); }
 
   .about-grid {
     display: grid;
@@ -342,14 +342,14 @@
   /* ── FOOTER ── */
   footer {
     background: var(--slate);
-    border-top: 0.5px solid rgba(212,216,204,0.06);
+    border-top: 0.5px solid rgba(212,216,204,0.15);
     padding: 28px 48px;
     display: flex; align-items: center; justify-content: space-between;
   }
 
   .footer-left {
-    font-size: 9px; font-weight: 300;
-    letter-spacing: 0.18em; color: var(--dark-sage);
+    font-size: 10px; font-weight: 500;
+    letter-spacing: 0.18em; color: var(--sage-light);
     text-transform: uppercase;
   }
 
@@ -452,8 +452,9 @@
   </div>
 
   <div class="hero-mini-compass">
-    <svg width="80" height="80" viewBox="-50 -50 100 100">
+    <svg width="80" height="96" viewBox="-50 -50 100 116">
       <polygon points="0,-44 10,-12 0,-3 -10,-12" fill="#B8962C"/>
+      <polygon points="0,52 7,22 0,12 -7,22" fill="none" stroke="#D4D8CC" stroke-width="1.2" stroke-linejoin="round"/>
       <line x1="-38" y1="0" x2="-14" y2="0" stroke="#D4D8CC" stroke-width="1.2" stroke-linecap="round"/>
       <line x1="14" y1="0" x2="38" y2="0" stroke="#D4D8CC" stroke-width="1.2" stroke-linecap="round"/>
       <circle cx="0" cy="0" r="10" fill="#232820" stroke="#D4D8CC" stroke-width="1.4"/>
@@ -588,11 +589,11 @@
       <a href="https://www.linkedin.com/in/morten-skriver-larsen-60984120" target="_blank" rel="noopener"
          style="font-size:10px; font-weight:500; letter-spacing:0.2em; color:var(--sage); text-decoration:none; text-transform:uppercase; transition: color 0.2s;"
          onmouseover="this.style.color='var(--gold-light)'" onmouseout="this.style.color='var(--dark-sage)'">
-        Selected roles &nbsp;·&nbsp; Full history on LinkedIn →
+        Selected roles &nbsp;·&nbsp; Full history on LinkedIn
       </a>
     </div>
   </div>
-</section> -->
+</section>
 <section class="contact" id="contact">
   <div class="contact-inner">
     <div>
@@ -627,10 +628,10 @@
   <span class="footer-left">Morten Skriver Larsen · Amsterdam · 2026</span>
   <div class="footer-right">
     <svg width="10" height="12" viewBox="-8 -10 16 20" aria-hidden="true">
-      <polygon points="0,-8 2,-2 0,-0.5 -2,-2" fill="#8A6E20"/>
-      <polygon points="0,7 1.5,2 0,0.5 -1.5,2" fill="none" stroke="#4A5248" stroke-width="0.8" stroke-linejoin="round"/>
-      <circle cx="0" cy="0" r="1.8" fill="#1C1E24" stroke="#4A5248" stroke-width="0.8"/>
-      <circle cx="0" cy="0" r="0.7" fill="#8A6E20"/>
+      <polygon points="0,-8 2,-2 0,-0.5 -2,-2" fill="#B8962C"/>
+      <polygon points="0,7 1.5,2 0,0.5 -1.5,2" fill="none" stroke="#D4D8CC" stroke-width="0.8" stroke-linejoin="round"/>
+      <circle cx="0" cy="0" r="1.8" fill="#232820" stroke="#D4D8CC" stroke-width="0.8"/>
+      <circle cx="0" cy="0" r="0.7" fill="#B8962C"/>
     </svg>
     <span class="footer-left">MSL</span>
   </div>
